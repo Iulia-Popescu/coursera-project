@@ -12,6 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
 
 import {DishService} from './services/dish.service';
+import {PromotionService} from './services/promotion.service';
 
 import 'hammerjs';
 import {AppComponent} from './app.component';
@@ -46,7 +47,8 @@ import {ContactComponent} from './contact/contact.component';
     FlexLayoutModule
   ],
   providers: [
-    DishService
+    DishService,
+    PromotionService
   ],
   bootstrap: [AppComponent]
 })
