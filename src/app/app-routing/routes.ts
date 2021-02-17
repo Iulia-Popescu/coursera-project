@@ -3,6 +3,7 @@ import {Routes} from '@angular/router';
 import {MenuComponent} from '../menu/menu.component';
 import {HomeComponent} from '../home/home.component';
 import {ContactComponent} from '../contact/contact.component';
+import {DishdetailComponent} from '../dishdetail/dishdetail.component';
 
 export const routes: Routes = [
   {
@@ -16,6 +17,10 @@ export const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent
+  },
+  {
+    path: 'dishdetail/:id',
+    component: DishdetailComponent
   },
   {
     path: '',
