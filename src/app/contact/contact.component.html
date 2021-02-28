@@ -38,9 +38,15 @@
 
   <div fxFlex fxFlexOffset="20px" class="form-size">
     <h3>Send us your Feedback</h3>
-    <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
 
-    <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+    <form novalidate
+          [formGroup]="feedbackForm"
+          #fform="ngForm"
+          (ngSubmit)="onSubmit()"
+          [@visibility]="formVisibility"
+          [@expand]
+          [hidden]="formVisibility == 'hidden'"
+    >
       <p>
         <mat-form-field class="half-width">
           <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
@@ -80,5 +86,42 @@
       </p>
       <button type="submit" mat-button class="background-primary text-floral-white">Submit</button>
     </form>
+
+    <div [hidden]="formVisibility == 'shown' || submissionVisibility == 'shown'">
+      <h4>Submitting Form</h4>
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <div *ngIf="submission" [@visibility]="submissionVisibility">
+      <h3>Your Submission</h3>
+      <div matLine>
+        <span>First name:</span>
+        <span>{{submission.firstname}}</span>
+      </div>
+      <div matLine>
+        <span>Last name:</span>
+        <span>{{submission.lastname}}</span>
+      </div>
+      <div matLine>
+        <span>Tel. Number:</span>
+        <span>{{submission.telnum}}</span>
+      </div>
+      <div matLine>
+        <span>Email:</span>
+        <span>{{submission.email}}</span>
+      </div>
+      <div matLine>
+        <span>Contact you?:</span>
+        <span>{{submission.agree}}</span>
+      </div>
+      <div matLine>
+        <span>How?:</span>
+        <span>{{submission.contacttype}}</span>
+      </div>
+      <div matLine>
+        <span>Feedback:</span>
+        <span>{{submission.message}}</span>
+      </div>
+    </div>
   </div>
 </div>
